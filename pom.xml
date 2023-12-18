@@ -36,7 +36,7 @@
 						<workers>1</workers>
 						<workerType>Micro</workerType>
 						<applicationName>timezoneapi-v1</applicationName>
-						<muleVersion>4.5.2</muleVersion>
+						<muleVersion>4.5</muleVersion>
 					</cloudHubDeployment>
 					<classifier>---- select project type ----</classifier>
 				</configuration>
@@ -75,6 +75,9 @@
 			<layout>default</layout>
 		</repository>
 	</repositories>
+	
+	
+	
 
 	<pluginRepositories>
 		<pluginRepository>
