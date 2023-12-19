@@ -1,0 +1,9 @@
+%dw 2.0
+
+type auto_8517aa47_a32a_4866_99af_22d2c157a783_Output_Attributes = {|
+  uriParams: {|
+    region: String, 
+    city: String
+  |}
+|}
+

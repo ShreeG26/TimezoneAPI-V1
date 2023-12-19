@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="timezoneapi-v1-test-suite.xml" />
+	<munit:test name="timezoneapi-v1-test-suite-timezoneapi-v1FlowTest" doc:id="9d2babc9-0e65-473b-a04a-e5469c30c13b" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="14adafd8-7d66-4c7a-9e41-ea882012a48c" name="timezoneapi-v1-test-suiteSub_Flow"/>
+			<flow-ref doc:name="Flow-ref to timezoneapi-v1Flow" doc:id="3f7c43a8-cb85-4b5d-9b8f-5c5c9af7a3c6" name="timezoneapi-v1Flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="e7684719-dfb2-4939-bbeb-97293da40ed2" message="Payload is Null" expression="#[payload]" is="#[MunitTools::both(MunitTools::notNullValue(),MunitTools::withMediaType('application/json'))]"/>
+		</munit:validation>
+	</munit:test>
+	<sub-flow name="timezoneapi-v1-test-suiteSub_Flow" doc:id="8517aa47-a32a-4866-99af-22d2c157a783" >
+		<munit:set-event doc:name="Set Event" doc:id="ab5d0e9c-702a-41bb-959c-5cccaf4b2658" >
+			<munit:attributes value="#[{uriParams:{region:'Asia',city:'Kolkata'}}]" />
+		</munit:set-event>
+	</sub-flow>
+	<munit:test name="timezoneapi-v1-test-suite-timezoneapi-v1FlowTest1" doc:id="e4e8d8b1-7a24-47e5-87d8-2693dd9dc4a3" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="10983f61-7ff2-4ed4-a6f8-c729cb4eeaab" name="timezoneapi-v1-test-suiteSub_Flow"/>
+			<flow-ref doc:name="Flow-ref to timezoneapi-v1Flow" doc:id="02705cb8-70ff-4531-a3ec-642e355ea702" name="timezoneapi-v1Flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="0a7baffa-4503-4634-93eb-2221b342765a" expression="#[payload]" is="#[MunitTools::withEncoding('UTF-8')]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
